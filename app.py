@@ -13,8 +13,13 @@ if uploaded_file is not None:
     # 1. Processing Logic
     if uploaded_file.name.endswith('.xml'):
         st.write("Processing XML...")
-        # Add your XML parsing function here (previously in convert.py)
-        # df = parse_xml_to_df(uploaded_file) 
+        # SMS Backup files-la sms tag irukkum
+        df = pd.read_xml(uploaded_file, xpath=".//sms")
+        
+        # 'body' nu irukura column-a 'message' nu rename pannuvom
+        if 'body' in df.columns:
+            df.rename(columns={'body': 'message'}, inplace=True)
+            
     else:
         df = pd.read_csv(uploaded_file)
     
