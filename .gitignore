@@ -1,0 +1,8 @@
+# Data files to ignore
+*.csv
+*.xml
+
+# VS Code and Python cache
+__pycache__/
+.env
+.vscode/
